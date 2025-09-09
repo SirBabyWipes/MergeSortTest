@@ -1,0 +1,30 @@
+array size = 10^0
+Execution time: 16 microseconds
+
+array size = 10^1
+Execution time: 0 microseconds
+
+array size = 10^2
+Execution time: 4 microseconds
+
+array size = 10^3
+Execution time: 20 microseconds
+
+array size = 10^4
+Execution time: 213 microseconds
+
+array size = 10^5
+Execution time: 2097 microseconds
+
+array size = 10^6
+Execution time: 19781 microseconds
+
+array size = 10^7
+Execution time: 194865 microseconds
+
+array size = 10^8
+Execution time: 1955914 microseconds
+
+array size = 10^9
+Execution time: 19616677 microseconds
+

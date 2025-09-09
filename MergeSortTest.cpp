@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <cmath>
+#include <vector>
 
 void mergeSort(int arr[], int left, int right);
 void merge(int arr[], int left, int mid, int right);
@@ -8,28 +9,30 @@ void merge(int arr[], int left, int mid, int right);
 int main() {
     srand(time(NULL));
     
-    
     for (int i = 0; i < 10; i++) {
         auto start_time = std::chrono::high_resolution_clock::now();
-        int arrSize = pow(10, i);
-        int arr[arrSize];
 
-        std::cout<<"array size = 10^"<<i<<"\n";
-        for (int i = 0; i < arrSize; i++) {
-            arr[i] = rand() % 1000;
+        int arrSize = 1;
+        for (int k = 0; k < i; k++) arrSize *= 10;
+
+        std::vector<int> arr(arrSize);
+
+        std::cout << "array size = 10^" << i << "\n";
+        for (int j = 0; j < arrSize; j++) {
+            arr[j] = rand() % 1000;
         }
 
         /*
-        std::cout <<"---Unsorted---\n";
-        for (int i = 0; i < arrSize; i++) {
-            std::cout << arr[i] << " ";
+        std::cout << "---Unsorted---\n";
+        for (int j = 0; j < arrSize; j++) {
+            std::cout << arr[j] << " ";
         }
-        std::cout <<"\n";
+        std::cout << "\n";
 
-        std::cout <<"---Sorted---\n";
-        mergeSort(arr, 0, arrSize - 1);
-        for (int i = 0; i < arrSize; i++) {
-            std::cout << arr[i] << " ";
+        std::cout << "---Sorted---\n";
+        mergeSort(arr.data(), 0, arrSize - 1);
+        for (int j = 0; j < arrSize; j++) {
+            std::cout << arr[j] << " ";
         }
         std::cout << "\n";
         */
@@ -57,14 +60,14 @@ void merge(int arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    int* L = new int[n1];
-    int* R = new int[n2];
+    std::vector<int> L(n1);
+    std::vector<int> R(n2);
 
-    for (int i = 0; i < n1; i++){
+    for (int i = 0; i < n1; i++) {
         L[i] = arr[left + i];
     }
-        
-    for (int j = 0; j < n2; j++){
+
+    for (int j = 0; j < n2; j++) {
         R[j] = arr[mid + 1 + j];
     }
 
@@ -80,8 +83,4 @@ void merge(int arr[], int left, int mid, int right) {
 
     while (i < n1) arr[k++] = L[i++];
     while (j < n2) arr[k++] = R[j++];
-
-    delete[] L;
-    delete[] R;
 }
-
